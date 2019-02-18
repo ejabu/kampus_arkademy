@@ -15,48 +15,62 @@ class KampusSiswa(models.Model):
             ('lulus', 'Lulus'),
         ], string='Status', default='aktif')
 
-    # Data Pribadi
     gender = fields.Selection([
             ('pria', 'Pria'),
             ('wanita', 'Wanita'),
         ], string='Gender',)
 
     tanggal_lahir = fields.Date(string='Tanggal Lahir', default=fields.Date.today())
+    umur = fields.Integer(string='Umur')
 
+    ipk = fields.Float(string='IPK')
+
+    image = fields.Binary(
+        "Image", attachment=True,
+    )
 
     def get_kuliah_terkait(self):
 
-        # """
-            # A. Ngambil Objek
+        """
+            A. Mengambil Object / Tabel
 
-            # self.env['kampus.kuliah'] sama seperti
+            Syntax ORM Odoo
+            self.env['kampus.kuliah']
 
-            # Syntax SQL >
-            # "FROM kampus_kuliah"
-        # """
+            sama seperti
+
+            Syntax SQL >
+            "FROM kampus_kuliah"
+        """
         tabel_kampus_kuliah = self.env['kampus.kuliah']
         tabel_kampus_siswa = self.env['kampus.siswa']
 
-        # """
-            # B. Membaca Satu Dokumen
+        """
+            B. Membaca Satu Dokumen
 
-            # self.env['kampus.kuliah'].browse(1) sama seperti
+            Syntax ORM Odoo
+            self.env['kampus.kuliah'].browse(1)
 
-            # Syntax SQL >
-            # "FROM kampus_kuliah WHERE id = 1"
-        # """
+            sama seperti
+
+            Syntax SQL >
+            "FROM kampus_kuliah WHERE id = 1"
+        """
         kuliah_row_satu = self.env['kampus.kuliah'].browse(1)
         siswa_row_satu = self.env['kampus.siswa'].browse(1)
 
 
-        # """
-            # C. Membaca kolom tertentu pada Satu Dokumen
+        """
+            C. Membaca kolom tertentu pada Satu Dokumen
 
-            # self.env['kampus.kuliah'].browse(1).name sama seperti
+            Syntax Odoo ORM
+            self.env['kampus.kuliah'].browse(1).name
 
-            # Syntax SQL >
-            # "SELECT name FROM kampus_kuliah WHERE id = 1"
-        # """
+            sama seperti
+
+            Syntax SQL >
+            "SELECT name FROM kampus_kuliah WHERE id = 1"
+        """
 
         kuliah_pertama_name = self.env['kampus.kuliah'].browse(1).name
         siswa_pertama_name = self.env['kampus.siswa'].browse(1).name
@@ -65,24 +79,23 @@ class KampusSiswa(models.Model):
         # Daripada nulis self.env['kampus.siswa']
         # Langsung aja self
         # Karena memang function ini ada di class KelasSiswa
-        
+
         id_siswa_row_satu = self.browse(1).id
         umur_siswa_row_satu = self.browse(1).umur
 
-        # E. Ketika mencet tombol di Form ID = 15
+        # E. Ketika menekan tombol di Form ID = 15
+
         id_siswa_row_lima_belas = self.id
         umur_siswa_row_lima_belas = self.umur
-
-
 
 
         self.env['kampus.kuliah']
 
         self.env['kampus.kuliah'].browse(1)
 
-        self.env['kampus.kuliah'].browse(1).name
-        self.env['kampus.kuliah'].browse(1).umur
-        self.env['kampus.kuliah'].browse(1).dosen_id.id
+        name = self.env['kampus.kuliah'].browse(1).name
+        kapasitas_siswa = self.env['kampus.kuliah'].browse(1).kapasitas_siswa
+        dosen_id = self.env['kampus.kuliah'].browse(1).dosen_id.id
 
         # FROM kampus_kuliah
 

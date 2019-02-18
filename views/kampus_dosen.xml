@@ -8,7 +8,6 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <!-- <menuitem id="kampus_dosen_menu" name="Kampus Dosen" sequence="200"/> -->
         <menuitem id="sub_kampus_dosen_menu" parent="master_data_menu" name="Kampus Dosen" sequence="20" action="kampus_dosen_action" />
         
         <!-- Tree view for the menuitem -->
@@ -35,6 +34,8 @@
                         <group>
                             <group>
                                 <field name="name"/>
+                                <field name="alamat"/>
+                                <field name="tanggal_masuk"/>
                             </group>
                             <group>
                             </group>
