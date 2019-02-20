@@ -18,10 +18,10 @@
                 <search>
                     <field name="name"/>
                     <field name="nomor_induk"/>
-                    <filter string="Lulus" domain="[('state','=', 'lulus')]" help="Filter siswa yang sudah lulus"/>
+                    <filter name="filter_lulus" string="Lulus" domain="[('state','=', 'lulus')]" help="Filter siswa yang sudah lulus"/>
                     <group expand="0" string="Group By...">
-                            <filter string="Tahun Masuk" domain="[]" context="{'group_by':'tanggal_masuk:year'}"/>
-                            <filter string="Status" domain="[]" context="{'group_by':'state'}"/>
+                            <filter name="group_year" string="Tahun Masuk" domain="[]" context="{'group_by':'tanggal_masuk:year'}"/>
+                            <filter name="group_state" string="Status" domain="[]" context="{'group_by':'state'}"/>
                     </group>
                 </search>
             </field>
